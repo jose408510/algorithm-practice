@@ -27,7 +27,8 @@ class App extends Component {
     ]})
   }
     togglePersonHandler = () => {
-      
+      const doesShow = this.state.showsPersons;
+      this.setState({showsPersons: !doesShow})
     }
 
   render() {
@@ -42,10 +43,11 @@ class App extends Component {
         click={this.switchNameHandler.bind(this, "JOSe")}
         changed={this.nameChangedHandler}
         >Hello my name is Jose </Project>
-
-      <div onClick={this.togglePersonHandler}>
-
-      </div>
+      {
+        this.state.showsPersons === true ?
+         <Person onClick={this.togglePersonHandler}>
+      </Person>  :null
+      }
       </div>
     );
   }
