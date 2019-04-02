@@ -40,10 +40,11 @@ class Myarray {
     this.shiftItems(index)
   }
   shiftItems(index) {
-    for (let i = index; i < this.length - 1 ; i++){
+    for ( let i = index; i < this.length - 1 ; i++ ){
       this.data[i] = this.data[i+1]
     }
-    // this.data[this.length]
+    delete this.data[this.length-1];
+    this.length--;
   }
 }
 
@@ -51,3 +52,24 @@ const newArray = new Myarray();
 newArray.push('hi')
 // newArray.pop();
 newArray.delete(1)
+
+// Reversing a string//
+
+function reverse(str) {
+  // check input
+  if(!str || str.length < 2 || typeof str !== "string") {
+    return "this is not a String"
+  }
+  const backwards = [];
+
+  const totalItems = str.length - 1 ;
+
+  for (let  i = totalItems ; i = 0; i-- ){
+    backwards.push(str[i])
+  }
+
+  return backwards.join('')
+}
+
+
+reverse("")
