@@ -5,8 +5,8 @@ import Project from './Projects/Projects';
 class App extends Component {
    state = {
     persons: [
-      { name: 'Max' , Age: "23"},
-      { name: 'Jose' , Age: "25"}
+      { id: '1' ,name: 'Max' , Age: "23"},
+      { id: '2' ,name: 'Jose' , Age: "25"}
     ],
       otherState: 'Some other value '
   }
@@ -31,7 +31,8 @@ class App extends Component {
       this.setState({showsPersons: !doesShow})
     }
     deletePersonHandler = (personIndex) => {
-      const persons = this.state.persons;
+      // const persons = this.state.persons.slice();
+      const persons = [...this.state.persons];
       persons.splice(personIndex, 1);
       this.setState({persons: persons});
     }
