@@ -30,8 +30,32 @@ class App extends Component {
       const doesShow = this.state.showsPersons;
       this.setState({showsPersons: !doesShow})
     }
+    deletePersonHandler = (personIndex) => {
+      const persons = this.state.persons;
+      persons.splice(personIndex, 1);
+      this.setState({persons: persons});
+    }
 
   render() {
+    {this.state.persons.map((person,index) => {
+        return <Project 
+        name={person}
+        click = {() => {this.deletePersonHandler(index)}}
+        />
+    })
+  }
+    // maps and array into something else
+    let persons = null;
+    if(this.state.showsPersons) {
+      persons = (
+      <div>
+        <h1>this a second way to render code</h1>
+      </div>
+      )
+    }
+    // code below return would be {persons} on which ever component you are trying to use it
+
+
     return (
       <div className="App">
         <h1>hello {this.state.persons[0].name} {console.log(this.state.persons[0].name)}</h1>
@@ -43,11 +67,12 @@ class App extends Component {
         click={this.switchNameHandler.bind(this, "JOSe")}
         changed={this.nameChangedHandler}
         >Hello my name is Jose </Project>
-      {
-        this.state.showsPersons === true ?
-         <Person onClick={this.togglePersonHandler}>
-      </Person>  :null
-      }
+      {/* {
+        this.state.showsPersons === true ? */}
+         <Project onClick={this.togglePersonHandler}>
+      </Project>  
+      {/* :null
+      } */}
       </div>
     );
   }
